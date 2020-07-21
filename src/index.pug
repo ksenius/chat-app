@@ -1,3 +1,12 @@
 extends ./pug/base
 
 block content
+  section.intro
+    .intro__container
+      //- Phone
+      .phone.intro__phone
+        .phone__screen
+      //- Description
+      .description.intro__description
+        h1.description__heading= description.heading
+        p.description__text= description.text

@@ -12,6 +12,147 @@ body {
     family: 'Rubik', Arial, sans-serif;
     size: 1.6rem;
   }
+  line-height: 1.75;
   color: $base-text;
   background-color: $white;
+}
+
+.phone {
+  position: relative;
+  width: 24.7rem;
+  height: 50.5rem;
+  background-color: $white;
+  padding: 1.1rem 1rem 1rem;
+  box-sizing: border-box;
+  border-radius: 3rem;
+
+  // notch
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 13rem;
+    height: 2.9rem;
+    background: $white;
+    border-radius: 0 0 1.5rem 1.5rem;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  &__screen {
+    height: 100%;
+    border-radius: 2rem;
+    overflow: hidden;
+    background: $very-dark-violet;
+  }
+}
+
+.description {
+  text-align: center;
+
+  &__heading,
+  &__text {
+    margin: 0;
+  }
+
+  &__heading {
+    color: $very-dark-violet;
+    font-weight: 500;
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 2.4rem;
+
+    @include breakpoint-up(md) {
+      font-size: 4rem;
+    }
+  }
+}
+
+.intro {
+  position: relative;
+  min-height: 100vh;
+  padding: 6.4rem 0;
+  background-color: #fafafa;
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: 0;
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 35%;
+    min-width: 51rem;
+    height: 100%;
+    background-color: $light-grayish;
+    z-index: -1;
+  }
+
+  &::before {
+    top: -48%;
+    left: 50%;
+    border-radius: 0 0 50vw 50vw;
+    transform: translateX(-100%);
+    @include gradient(to bottom);
+
+    @include breakpoint-up(md) {
+      transform: translate(calc(-100% - 6.6rem), 0);
+    }
+
+    @include breakpoint-up(lg) {
+      top: -50%;
+      transform: translate(calc(-100% - 30rem), 30rem);
+    }
+  }
+
+  &::after {
+    right: 50%;
+    bottom: -48%;
+    border-radius: 50vw 50vw 0 0;
+    transform: translate(100%, 0);
+
+    @include breakpoint-up(md) {
+      transform: translate(calc(100% + 5rem), 0);
+    }
+
+    @include breakpoint-up(lg) {
+      bottom: -50%;
+      transform: translate(calc(100% + 39.5rem), -28rem);
+    }
+  }
+
+  &__container {
+    width: calc(100% - 6rem);
+    max-width: 93.2rem;
+    min-height: calc(100vh - 12.8rem);
+    margin: 0 auto;
+    @include flexbox(center, center, column);
+
+    @include breakpoint-up(lg) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__phone {
+    flex-shrink: 0;
+    box-shadow: 1rem 2rem 3.6rem 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 6rem;
+
+    @include breakpoint-up(lg) {
+      margin-left: 10.9rem;
+      margin-bottom: 0;
+    }
+  }
+
+  &__description {
+    max-width: 45rem;
+
+    @include breakpoint-up(lg) {
+      text-align: left;
+    }
+  }
 }
