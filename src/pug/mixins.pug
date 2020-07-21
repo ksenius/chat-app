@@ -1,20 +1,50 @@
 //- Chat header
-mixin chat-header(options = {})
-  - let { user } = options
+mixin chat-header(user)
   .chat__header
     span.angle-left.chat__angle-left
-    .chat__user-avatar: img.image(src=`images/${user.avatar}`)
+    .chat__user-avatar: img.image(src=`images/${user.avatar}`, alt="")
     .chat__user-info
       .chat__user-name= user.name
       .chat__user-status= user.status
     span.vertical-dots: span
 
+//- Chat options
+mixin chat-options(options, type)
+  - let { name, items} = options
+  each option in items
+    .chat__option(class=`chat__bubble chat__bubble_option chat__bubble_${type}`)
+      label.chat__option-label
+        input.chat__option-control(type="radio", name=name, tabindex="-1")
+        span.chat__option-message= option.message
+        span.chat__option-price= option.price
+        span.chat__custom-radio
+
+//- Chat message
+mixin chat-message(message)
+  - let { type, message: text,  attachments, options } = message
+  .chat__message(class=`chat__message_${type}`)
+    //- message attachments
+    if attachments && attachments.images
+      .chat__images
+        each image in attachments.images
+          .chat__image: img.image(src=`images/${image}` alt="")
+    //- message text
+    if text
+      .chat__bubble(class=`chat__bubble_${type}`)= text
+    //- options
+    if options
+      +chat-options(options, type)
+
 //- Chat content
-mixin chat-content
+mixin chat-content(content)
   .chat__content
+    - let i = content.length - 1
+    while i >= 0
+      +chat-message(content[i])
+      - i--
 
 //- Chat form
 mixin chat-form(placeholder)
   form.chat__form
-    input.chat__input(type="text", placeholder=placeholder)
-    button.chat__button: span.angle-right
+    input.chat__input(type="text", placeholder=placeholder, tabindex="-1")
+    button.chat__button(tabindex="-1"): span.angle-right
