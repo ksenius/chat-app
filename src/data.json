@@ -1,0 +1,65 @@
+{
+  "site": {
+    "title": "Frontend Mentor | Chat app CSS illustration",
+    "font": "https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+  },
+  "description": {
+    "heading": "Simple booking",
+    "text": "Stay in touch with our dog walkers through the chat interface. This makes it easy to discuss arrangements and make bookings. Once the walk has been completed you can rate your walker and book again all through the chat."
+  },
+  "chat": {
+    "header": {
+      "user": {
+        "name": "Samuel Green",
+        "avatar": "avatar.jpg",
+        "status": "Available to Walk"
+      }
+    },
+    "content": [
+      {
+        "type": "received",
+        "options": {
+          "name": "dog-walking",
+          "items": [
+            {
+              "message": "30 minute walk",
+              "price": "$29"
+            },
+            {
+              "message": "1 hour walk",
+              "price": "$49"
+            }
+          ]
+        }
+      },
+      {
+        "type": "received",
+        "message": "She looks so happy! The time we discussed works. How long shall I take her out for?"
+      },
+      {
+        "type": "sent",
+        "message": "Can you make it?"
+      },
+      {
+        "type": "sent",
+        "message": "Here are a few pictures. She’s a happy girl!",
+        "attachments": {
+          "images": [
+            "dog-image-1.jpg",
+            "dog-image-2.jpg",
+            "dog-image-3.jpg"
+          ]
+        }
+      },
+      {
+        "type": "received",
+        "message": "Could you send over some pictures of your dog, please?"
+      },
+      {
+        "type": "received",
+        "message": "That sounds great. I’d be happy with that."
+      }
+    ],
+    "placeholder": "Type a message…"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ksenius/chat-app",
+  "author": "ksenius",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "parcel src/index.pug -p 3000",
+    "build": "parcel build src/index.pug --no-source-maps",
+    "prebuild": "rm -rf dist"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "postcss-preset-env": "^6.7.0",
+    "pug": "^3.0.0",
+    "sass": "^1.26.10"
+  },
+  "browserslist": [
+    ">= 1%",
+    "last 2 versions",
+    "not IE 11",
+    "not dead"
+  ]
+}

@@ -1,0 +1,69 @@
+// Breakpoints
+@mixin breakpoint-up($size) {
+  @if $size == sm {
+    @media (min-width: 576px) {
+      @content;
+    }
+  } @else if $size == md {
+    @media (min-width: 768px) {
+      @content;
+    }
+  } @else if $size == lg {
+    @media (min-width: 992px) {
+      @content;
+    }
+  } @else if $size == xl {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+}
+
+// Media query
+@mixin media($min, $max: null) {
+  @if $min and $max {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  }
+}
+
+// Flexbox
+@mixin flexbox(
+  $items: null,
+  $justify: null,
+  $direction: null,
+  $wrap: null,
+  $content: null,
+  $display: flex
+) {
+  display: $display;
+
+  @if $direction and $wrap {
+    flex-flow: $direction $wrap;
+  } @else {
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+  }
+
+  align-items: $items;
+  align-content: $content;
+  justify-content: $justify;
+}
+
+// Gradient
+@mixin gradient(
+  $direction,
+  $color1: hsl(293, 100%, 63%),
+  $color2: hsl(264, 100%, 61%)
+) {
+  background-image: linear-gradient($direction, $color1, $color2);
+}

@@ -1,0 +1,1 @@
+# Chat app CSS illustration
