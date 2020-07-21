@@ -1,4 +1,5 @@
 extends ./pug/base
+include ./pug/mixins
 
 block content
   section.intro
@@ -6,6 +7,12 @@ block content
       //- Phone
       .phone.intro__phone
         .phone__screen
+          //- Chat
+          .chat(aria-hidden="true")
+            +chat-header(chat.header)
+            +chat-content(chat.content)
+            +chat-form(chat.placeholder)
+
       //- Description
       .description.intro__description
         h1.description__heading= description.heading

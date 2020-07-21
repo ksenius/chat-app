@@ -1,0 +1,20 @@
+//- Chat header
+mixin chat-header(options = {})
+  - let { user } = options
+  .chat__header
+    span.angle-left.chat__angle-left
+    .chat__user-avatar: img.image(src=`images/${user.avatar}`)
+    .chat__user-info
+      .chat__user-name= user.name
+      .chat__user-status= user.status
+    span.vertical-dots: span
+
+//- Chat content
+mixin chat-content
+  .chat__content
+
+//- Chat form
+mixin chat-form(placeholder)
+  form.chat__form
+    input.chat__input(type="text", placeholder=placeholder)
+    button.chat__button: span.angle-right

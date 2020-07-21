@@ -17,6 +17,173 @@ body {
   background-color: $white;
 }
 
+.angle-left {
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    width: 0.6rem;
+    height: 0.2rem;
+    background: #fff;
+    margin: 0.2rem;
+  }
+
+  &::before {
+    transform: rotate(-60deg);
+  }
+
+  &::after {
+    transform: rotate(60deg);
+  }
+}
+
+.angle-right {
+  display: inline-block;
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    width: 0.7rem;
+    height: 0.2rem;
+    background: #fff;
+    margin: 0.2rem;
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
+}
+
+.vertical-dots {
+  @include flexbox($direction: column);
+  padding: 0.5rem;
+
+  span {
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+    }
+
+    &,
+    &::before,
+    &::after {
+      display: block;
+      width: 0.2rem;
+      height: 0.2rem;
+      background: $white;
+    }
+
+    &::before {
+      margin-top: -0.3rem;
+    }
+
+    &::after {
+      margin-top: 0.4rem;
+    }
+  }
+}
+
+.image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.chat {
+  @include flexbox($direction: column);
+  height: 100%;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  user-select: none;
+  background: $light-grayish;
+
+  &__header {
+    @include flexbox(center);
+    padding: 3rem 1.1rem 1.2rem 0.9rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+    color: $pale-violet;
+    @include gradient(to left);
+  }
+
+  &__angle-left {
+    padding: 0.3rem;
+  }
+
+  &__user-avatar {
+    width: 2.4rem;
+    height: 2.4rem;
+    border: 0.1rem solid $white;
+    border-radius: 50%;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin-left: 0.2rem;
+  }
+
+  &__user-info {
+    flex-grow: 1;
+    line-height: 1;
+    margin: 0 0.8rem;
+  }
+
+  &__user-name {
+    font: {
+      size: 1.1rem;
+      weight: 500;
+    }
+    color: $white;
+    margin-bottom: 0.3rem;
+  }
+
+  &__content {
+    flex-grow: 1;
+    // border: 1px solid coral;
+  }
+
+  &__form {
+    position: relative;
+    margin: 0.8rem 0.7rem 1.1rem;
+  }
+
+  &__input {
+    width: 100%;
+    height: 3.4rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: inherit;
+    background: $white;
+    border: 0.1rem solid $white;
+    border-radius: 1.7rem;
+    padding-left: 2rem;
+    padding-right: 4rem;
+    box-sizing: border-box;
+    outline: none;
+
+    &::placeholder {
+      color: $placeholder;
+    }
+  }
+
+  &__button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    background: $very-dark-violet;
+    border: 0;
+    padding: 0;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+  }
+}
+
 .phone {
   position: relative;
   width: 24.7rem;
@@ -45,7 +212,6 @@ body {
     height: 100%;
     border-radius: 2rem;
     overflow: hidden;
-    background: $very-dark-violet;
   }
 }
 
