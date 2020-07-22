@@ -145,14 +145,15 @@ body {
   &__content {
     flex-grow: 1;
     @include flexbox($direction: column, $justify: flex-end);
-    margin: 0 0.7rem 0.8rem;
+    margin: 0 0.7rem;
+    overflow: hidden;
   }
 
   &__images {
     @include flexbox;
     min-width: none;
     width: 14.4rem;
-    margin: 0 -0.4rem;
+    margin: 0 -0.4rem 0.8rem;
   }
 
   &__image {
@@ -178,12 +179,9 @@ body {
       align-items: flex-end;
     }
 
-    &_sent + &_received {
-      margin-top: 0.8rem;
-    }
-
+    &_sent + &_received,
     &_received + &_sent {
-      margin-top: 1.6rem;
+      margin-top: 0.8rem;
     }
   }
 
@@ -192,7 +190,7 @@ body {
     padding: 0.6rem 0.8rem 0.4rem;
     box-sizing: border-box;
     border-radius: 1rem;
-    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
 
     &_sent {
       color: $right-message-text;

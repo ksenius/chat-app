@@ -33,11 +33,12 @@ mixin chat-message(message)
       .chat__bubble(class=`chat__bubble_${type}`)= text
     //- options
     if options
-      +chat-options(options, type)
+      form(name="chat-options")
+        +chat-options(options, type)
 
 //- Chat content
 mixin chat-content(content)
-  .chat__content
+  .chat__content.js-chat-content
     - let i = content.length - 1
     while i >= 0
       +chat-message(content[i])
@@ -45,6 +46,6 @@ mixin chat-content(content)
 
 //- Chat form
 mixin chat-form(placeholder)
-  form.chat__form
+  form.chat__form(name="chat-message")
     input.chat__input(type="text", placeholder=placeholder, tabindex="-1")
     button.chat__button(tabindex="-1"): span.angle-right
