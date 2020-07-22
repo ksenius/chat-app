@@ -62,6 +62,9 @@ class ChatApp {
   _appendMessage(messageText) {
     const message = this._createMessage(messageText);
 
+    // change initial CSS animation delay
+    message.style.animationDelay = '0.2s';
+
     this.contentElement.append(message);
   }
 

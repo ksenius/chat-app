@@ -110,6 +110,14 @@ body {
     border-radius: 0 0 0.5rem 0.5rem;
     color: $pale-violet;
     @include gradient(to left);
+    animation: 0.6s chat-header backwards;
+
+    @keyframes chat-header {
+      0% {
+        opacity: 0;
+        transform: translateY(-100%);
+      }
+    }
   }
 
   &__angle-left {
@@ -172,16 +180,50 @@ body {
   }
 
   &__message {
+    width: 16rem;
+    animation-duration: 0.8s;
+    animation-delay: 0.6s;
+    animation-fill-mode: backwards;
+
     &_sent {
       align-self: flex-end;
       float: right;
       @include flexbox($direction: column);
       align-items: flex-end;
+      animation-name: chat-message-right;
+    }
+
+    &_received {
+      animation-name: chat-message-left;
     }
 
     &_sent + &_received,
     &_received + &_sent {
       margin-top: 0.8rem;
+    }
+
+    @keyframes chat-message-right {
+      0% {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes chat-message-left {
+      0% {
+        opacity: 0;
+        transform: translateX(-100%);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: translateX(0);
+      }
     }
   }
 
@@ -206,7 +248,6 @@ body {
     }
 
     &_option {
-      width: 16rem;
       max-width: none;
       color: $white;
       padding: 0.7rem 1.6rem 0.7rem 0.8rem;
@@ -269,6 +310,14 @@ body {
   &__form {
     position: relative;
     margin: 0.8rem 0.7rem 1.1rem;
+    animation: 0.6s chat-form backwards;
+
+    @keyframes chat-form {
+      0% {
+        opacity: 0;
+        transform: translateY(6rem);
+      }
+    }
   }
 
   &__input {
@@ -359,9 +408,39 @@ body {
     font-size: 3.5rem;
     line-height: 1.2;
     margin-bottom: 2.4rem;
+    animation: 1.2s 0.4s description-heading backwards;
 
     @include breakpoint-up(md) {
       font-size: 4rem;
+    }
+
+    @keyframes description-heading {
+      0% {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+
+      20% {
+        opacity: 0;
+      }
+
+      60% {
+        transform: translateX(-2rem);
+      }
+
+      80% {
+        transform: translateX(2rem);
+      }
+    }
+  }
+
+  &__text {
+    animation: 0.6s ease-in 1.2s description-text backwards;
+
+    @keyframes description-text {
+      0% {
+        opacity: 0;
+      }
     }
   }
 }
@@ -385,6 +464,9 @@ body {
     height: 100%;
     background-color: $light-grayish;
     z-index: -1;
+    animation-duration: 4s;
+    animation-delay: 0.6s;
+    animation-fill-mode: backwards;
   }
 
   &::before {
@@ -393,14 +475,21 @@ body {
     border-radius: 0 0 50vw 50vw;
     transform: translateX(-100%);
     @include gradient(to bottom);
+    animation-name: intro-pattern-left;
 
     @include breakpoint-up(md) {
-      transform: translate(calc(-100% - 6.6rem), 0);
+      transform: translateX(calc(-100% - 6.6rem));
     }
 
     @include breakpoint-up(lg) {
       top: -50%;
       transform: translate(calc(-100% - 30rem), 30rem);
+    }
+
+    @keyframes intro-pattern-left {
+      0% {
+        top: -45%;
+      }
     }
   }
 
@@ -409,6 +498,7 @@ body {
     bottom: -48%;
     border-radius: 50vw 50vw 0 0;
     transform: translate(100%, 0);
+    animation-name: intro-pattern-right;
 
     @include breakpoint-up(md) {
       transform: translate(calc(100% + 5rem), 0);
@@ -417,6 +507,12 @@ body {
     @include breakpoint-up(lg) {
       bottom: -50%;
       transform: translate(calc(100% + 39.5rem), -28rem);
+    }
+
+    @keyframes intro-pattern-right {
+      0% {
+        bottom: -45%;
+      }
     }
   }
 
